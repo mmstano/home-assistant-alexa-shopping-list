@@ -37,7 +37,7 @@ class AlexaShoppingList:
         user_agent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36"
 
         chrome_options = Options()
-        chrome_options.add_argument("--headless")
+    #    chrome_options.add_argument("--headless")
         chrome_options.add_argument("window-size=1366,768")
         chrome_options.add_argument("--disable-gpu")
         chrome_options.add_argument("--no-sandbox")
@@ -55,6 +55,8 @@ class AlexaShoppingList:
         self._selenium_get("https://www."+self.amazon_url, (By.TAG_NAME, 'body'))
         self._load_cookies()
 
+        time.sleep(5)
+        
         if len(self.driver.find_elements(By.ID, 'nav-backup-backup')) > 0:
             self.driver.find_element(By.CLASS_NAME, "nav-bb-right").find_element(By.LINK_TEXT, "Your Account").click()
             time.sleep(5)
